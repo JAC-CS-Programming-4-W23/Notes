@@ -1,5 +1,7 @@
 # 420-4P6 Programming 4
 
+![Banner](Banner.png)
+
 In this repo you will find the notes for this course.
 
 You can view the pretty version of the notes [here](https://jac-cs-programming-4-w23.github.io/Notes).
