@@ -31,9 +31,7 @@
 
 ## 🚘 Data Structures & Algorithms
 
-![Drive Thru](./images/1-Drive-Thru.jpg)
-
-_Image from [VectorStock](https://cdn3.vectorstock.com/i/1000x1000/25/07/cartoon-drive-thru-menu-board-fast-food-business-vector-17482507.jpg)_
+[![Drive Thru](./images/1-Drive-Thru.jpg "Image from VectorStock")](https://cdn3.vectorstock.com/i/1000x1000/25/07/cartoon-drive-thru-menu-board-fast-food-business-vector-17482507.jpg)
 
 - **Data structure**: A way to represent and model a collection of _values_ that are subject to a set of _rules_.
   - **Values**: All the people in their cars at a fast food drive-thru
@@ -103,9 +101,7 @@ Let's use it to change themes!
 
 1. Bring up search with double `SHIFT`, type "theme", and hit `ENTER`:
 
-   ![Theme](./images/6-Theme.png)
-
-      _Using [Catppuccin](https://plugins.jetbrains.com/plugin/18682-catppuccin-theme) theme_
+   [![Theme](./images/6-Theme.png "Using the lovely 'Catppuccin' theme.")](https://plugins.jetbrains.com/plugin/18682-catppuccin-theme)
 
 2. You can choose a theme that's already installed, or click "Install theme..." to install another one. I'm a big proponent of customized workspaces! ✨
 3. If `Main.java` is currently open, close the tab either by clicking the "x" on the tab itself or (my preferred way) use the shortcut `CMD + W`.
@@ -116,17 +112,25 @@ Let's use it to change themes!
 
    ![Find in Files](./images/7-Find-in-Files.png)
 
-8. Hti `ENTER` and it should open the file.
+8. Hit `ENTER` and it should open the file.
 
 These are two super powerful features that you should get familiar with in any IDE. From here, you can open any file in your project and invoke any IDE function you may need!
 
-## 👋 Exercise 0.0: Hello World
+### ✨ New IntelliJ UI
+
+Being a web guy, I must admit that I have an affinity for Visual Studio Code. When I saw that IntelliJ had a new experimental UI, I had to check it out, because it makes IntelliJ look more like VSC! 🤩
+
+![New UI](./images/8-New-UI.png)
+
+If you're curious, you can enable this too. You can always change it back if it's not your thing. To enable it, hit double `SHIFT` and search for "New UI".
+
+## 👋 Exercise 0.0 - Hello World
 
 There's not much we actually have to do since "Hello world!" is already written for us:
 
 1. Hit the green "play" icon on the top right and you should see "Hello world!" printed in the console.
 
-![Output](./images/8-Output.png)
+![Output](./images/9-Output.png)
 
 That was easy!
 
@@ -177,11 +181,11 @@ An **interface** in object-oriented programming is a set of variables and functi
 
 Here's an excellent example of interfaces by [Dave Leeds](https://www.hitthebits.com/p/about-me.html):
 
-[![Interface](./images/9-Interface.png)](https://www.hitthebits.com/2012/11/what-are-interfaces.html)
+[![Interface](./images/10-Interface.png)](https://www.hitthebits.com/2012/11/what-are-interfaces.html)
 
 The light switch provides an easy way for the caller to turn the lights on without the caller having to know anything about the fancy electrical stuff! This concept goes hand in hand with the OOP concept of [abstraction](https://www.digitalocean.com/community/tutorials/what-is-abstraction-in-oops).
 
-## 📝 Exercise 0.1: Survey
+## 📝 Exercise 0.1 - Survey
 
 Please click [here](https://github.com/JAC-CS-Programming-4-W23/E0.1-Survey) to do the exercise and remember to post your survey results to Moodle!
 
