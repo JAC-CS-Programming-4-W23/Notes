@@ -2,9 +2,32 @@
 
 ## 🎯 Objectives
 
-1. **Install** the IntelliJ IDE.
-2. **Set up** a basic IntelliJ Java project.
+1. **Explain** what is a data structure and an algorithm.
+2. **Install and set up** a basic Java project using the IntelliJ IDE.
 3. **Print** "Hello World" to the console.
+4. **Review** basic OOP concepts.
+
+## ☕ Introduction to Java
+
+- Created in the 1990’s
+- OOP language
+- Very popular in 2000’s [still very popular](https://www.tiobe.com/tiobe-index/)
+  – Sometime check out: [The Most Popular Programming Languages - 1965/2020](https://www.youtube.com/watch?v=UNSoPa-XQN0)
+- Evolving: Current language version is 19. If interested have a look at [this guide to Java versions and features](https://www.marcobehler.com/guides/a-guide-to-java-versions-and-features).
+- Mobile (Android) Web (server side) Enterprise
+- Big data
+- "write once, run anywhere"
+  - compiled Java is "bytecode" (.class files)
+  - You can "read" bytecode but the real version is in binary
+  - bytecode runs on a Java Virtual Machine available on many platforms, including Android
+- **JVM** Java Virtual Machine, used to run java code by reading bytecode and running instructions on the machine.
+- **JRE** Java Runtime Environment. Software to run compiled Java, including libraries and JVM.
+- **JDK** Java Development Kit. Tools to compile and run java programs, includes a JRE and JVM.
+- [JDK vs JRE vs JVM in Java](https://www.guru99.com/difference-between-jdk-jre-jvm.html)
+- Java SE Java Standard Edition (we will use this)
+- Java EE Java Enterprise Edition
+- JDK per Java version
+- Multiple companies have JDKs: Oracle, Google (Android), Amazon
 
 ## 🚘 Data Structures & Algorithms
 
@@ -138,28 +161,32 @@ public class Main {
     Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
         at Main.main(Main.java:3)
 
-    > java Main programming-4
-    programming-4
+    > java Main programming 4 is awesome
+    programming
     ```
 
 6. `System.out.println()`: When you want to write to [standard out](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/System.html#out).
 
 ### Interfaces
 
-- "skeleton" aspect
-- "contract" aspect
-- "type" aspect
+An **interface** in object-oriented programming is a set of variables and functions that a class must implement.
+
+- 🦴 "Skeleton" aspect: the implementing class "fills out" the structure of the interface.
+- 📑 "Contract" aspect: the implementing class must implement each of the method signatures defined in the interface declaration.
+- 🔌 "Membership" aspect: the implementing class can be supplied wherever the interface type is used, i.e.: where code is written in terms of the interface.
+
+Here's an excellent example of interfaces by [Dave Leeds](https://www.hitthebits.com/p/about-me.html):
+
+[![Interface](./images/9-Interface.png)](https://www.hitthebits.com/2012/11/what-are-interfaces.html)
+
+The light switch provides an easy way for the caller to turn the lights on without the caller having to know anything about the fancy electrical stuff! This concept goes hand in hand with the OOP concept of [abstraction](https://www.digitalocean.com/community/tutorials/what-is-abstraction-in-oops).
 
 ## 📝 Exercise 0.1: Survey
 
-- post responses on Moodle
-- Demo: add `prompt()` to interface.
-- Demo: add `YesNoQuestion`
-- Exercise: add a survey question `MultipleChoiceQuestion`
-- Exercise: code binary search
-- Exercise: convert binary search to comparable
-- Comparators?
+Please click [here]() to do the exercise and remember to post your survey results to Moodle!
 
 ## 📚 References
 
 - [Official Java API Docs](https://docs.oracle.com/en/java/javase/19/docs/api/index.html)
+- [What are Interfaces in Object-Oriented Programming (OOP)?](https://www.hitthebits.com/2012/11/what-are-interfaces.html)
+- [What is Abstraction in OOPS?](https://www.digitalocean.com/community/tutorials/what-is-abstraction-in-oops)
