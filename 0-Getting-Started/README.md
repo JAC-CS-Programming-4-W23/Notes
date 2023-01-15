@@ -183,7 +183,7 @@ The light switch provides an easy way for the caller to turn the lights on witho
 
 ## 📝 Exercise 0.1: Survey
 
-Please click [here]() to do the exercise and remember to post your survey results to Moodle!
+Please click [here](https://github.com/JAC-CS-Programming-4-W23/E0.1-Survey) to do the exercise and remember to post your survey results to Moodle!
 
 ## 📚 References
 
