@@ -36,6 +36,11 @@
 			text-align: center;
 		}
 
+		.footer {
+			font-size: 0.75rem;
+			text-align: center;
+		}
+
 	</style>
 </head>
 
@@ -63,6 +68,12 @@
 			plantuml: {
 				renderSvgAsObject: true,
 			},
+			footer: {
+				copy: 'These notes by <a xmlns:cc="http://creativecommons.org/ns#" href="https://jac-cs-programming-4-w23.github.io/Notes/#/" property="cc:attributionName" rel="cc:attributionURL">Ian Clement & Vikram Singh</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</br>',
+				auth: '',
+				pre: '<hr/>',
+				class: 'footer',
+			},
 		}
 	</script>
 	<!-- Docsify v5 -->
@@ -74,6 +85,7 @@
 	<script src="//unpkg.com/docsify-plantuml/dist/docsify-plantuml.min.js"></script>
 	<script src="//unpkg.com/@h-hg/docsify-image-caption/dist/docsify-image-caption.min.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
+	<script src="//unpkg.com/docsify-footer-enh/dist/docsify-footer-enh.min.js"></script>
 </body>
 
 </html>
