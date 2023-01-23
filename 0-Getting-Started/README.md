@@ -124,7 +124,7 @@ Being a web guy, I must admit that I have an affinity for Visual Studio Code. Wh
 
 If you're curious, you can enable this too. You can always change it back if it's not your thing. To enable it, hit double `SHIFT` and search for "New UI".
 
-## 👋 Exercise 0.0 - Hello World
+## ▶️ Exercise 0.0 - Hello World
 
 There's not much we actually have to do since "Hello world!" is already written for us:
 
@@ -185,7 +185,7 @@ Here's an excellent example of interfaces by [Dave Leeds](https://www.hitthebits
 
 The light switch provides an easy way for the caller to turn the lights on without the caller having to know anything about the fancy electrical stuff! This concept goes hand in hand with the OOP concept of [abstraction](https://www.digitalocean.com/community/tutorials/what-is-abstraction-in-oops).
 
-## 📝 Exercise 0.1 - Survey
+## ▶️ Exercise 0.1 - Survey
 
 Please click [here](https://github.com/JAC-CS-Programming-4-W23/E0.1-Survey) to do the exercise and remember to post your survey results to Moodle!
 

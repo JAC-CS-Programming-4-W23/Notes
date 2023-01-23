@@ -201,7 +201,7 @@ public static void countLinesAndWords(String inFileName) {
 }
 ```
 
-## ✂️ Exercise 1.1 - Cut
+## ▶️ Exercise 1.1 - Cut
 
 Please click [here](https://github.com/JAC-CS-Programming-4-W23/E1.1-Cut) to do the exercise.
 
