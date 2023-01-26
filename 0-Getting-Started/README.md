@@ -160,7 +160,7 @@ public class Main {
    }
    ```
 
-    ```text
+    ```output
     > java Main
     Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
         at Main.main(Main.java:3)
