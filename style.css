@@ -1,0 +1,100 @@
+@import url('./catppuccin.css');
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* Monochrome */
+		--mono-hue: 240;
+		--mono-saturation: 21%;
+
+		/* Theme */
+		--theme-hue: 234;
+		--theme-saturation: 82%;
+		--theme-lightness: 85%;
+
+		--code-theme-comment: var(--ctp-macchiato-overlay0);
+		--code-theme-function: var(--ctp-macchiato-blue);
+		--code-theme-keyword: var(--ctp-macchiato-red);
+		--code-theme-operator: var(--ctp-macchiato-sky);
+		--code-theme-punctuation: var(--ctp-macchiato-text);
+		--code-theme-selection: var(--ctp-macchiato-overlay1);
+		--code-theme-selector: var(--ctp-macchiato-green);
+		--code-theme-tag: var(--ctp-macchiato-lavender);
+		--code-theme-text: var(--ctp-macchiato-peach);
+		--code-theme-variable: var(--ctp-macchiato-peach);
+
+		--link-color: var(--ctp-macchiato-lavender);
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		/* Monochrome */
+		--mono-hue: 220;
+		--mono-saturation: 23%;
+
+		/* Theme */
+		--theme-hue: 231;
+		--theme-saturation: 97%;
+		--theme-lightness: 72%;
+
+		--code-theme-comment: var(--ctp-latte-overlay0);
+		--code-theme-function: var(--ctp-latte-blue);
+		--code-theme-keyword: var(--ctp-latte-red);
+		--code-theme-operator: var(--ctp-latte-sky);
+		--code-theme-punctuation: var(--ctp-latte-text);
+		--code-theme-selection: var(--ctp-latte-overlay1);
+		--code-theme-selector: var(--ctp-latte-green);
+		--code-theme-tag: var(--ctp-latte-lavender);
+		--code-theme-text: var(--ctp-latte-peach);
+		--code-theme-variable: var(--ctp-latte-peach);
+
+		--link-color: var(--ctp-latte-lavender);
+	}
+}
+
+:root {
+	--code-font-family: "Cascadia Code", "Roboto Mono", "Monaco", "courier", "monospace";
+	/* --base-font-family: "Proxima Nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+}
+
+.lang-output.language-output {
+	border: 2px solid var(--code-theme-background);
+	background-color: var(--base-background-color);
+}
+
+/* Center images */
+img {
+	margin: 0 auto;
+	border-radius: 1rem;
+	display: flex;
+}
+
+img[alt$=">"] {
+	float: right;
+}
+
+img[alt$="<"] {
+	float: left;
+}
+
+img[alt$="><"] {
+	float: none !important;
+}
+
+.img-caption {
+	margin-top: -1.5em;
+}
+
+/* Center PlantUML diagrams */
+p[data-lang="plantuml"] {
+	text-align: center;
+}
+
+.footer {
+	font-size: 0.75rem;
+	text-align: center;
+}
+
+th:empty, td:empty {
+	display: none;
+}
