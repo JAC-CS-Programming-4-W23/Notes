@@ -55,40 +55,45 @@ What is a possible problem: queue *overflow*.
 
 ![Queue overflow](images/queue5.png)
 
-| `enqueue()`   |                                          |
-| ------------- | ---------------------------------------- |
-| Description   | Add an element to the rear of the queue. |
-| Signature     | `void enqueue(int element)`              |
-| Precondition  | queue is not full.                       |
-| Postcondition | `element` is the new rear of queue.      |
+| `enqueue()`  |                                          |
+| ------------ | ---------------------------------------- |
+| Description  | Add an element to the rear of the queue. |
+| Signature    | `void enqueue(int element)`              |
+| Precondition | queue is not full.                       |
+| Mutator      | Yes                                      |
+| Returns      | `element` is the new rear of queue.      |
 
-| `dequeue()`   |                                        |
-| ------------- | -------------------------------------- |
-| Description   | Remove an element from the queue.      |
-| Signature     | `int dequeue()`                        |
-| Precondition  | queue is not empty.                    |
-| Postcondition | the element is removed from the queue. |
+| `dequeue()`  |                                        |
+| ------------ | -------------------------------------- |
+| Description  | Remove an element from the queue.      |
+| Signature    | `int dequeue()`                        |
+| Precondition | queue is not empty.                    |
+| Mutator      | Yes                                    |
+| Returns      | the element is removed from the queue. |
 
-| `front()`     |                                                           |
-| ------------- | --------------------------------------------------------- |
-| Description   | Get the front element of the queue.                       |
-| Signature     | `int front()`                                             |
-| Precondition  | Queue is not empty.                                       |
-| Postcondition | The front element is returned and the queue is unchanged. |
+| `front()`    |                                                           |
+| ------------ | --------------------------------------------------------- |
+| Description  | Get the front element of the queue.                       |
+| Signature    | `int front()`                                             |
+| Precondition | Queue is not empty.                                       |
+| Mutator      | No                                                        |
+| Returns      | The front element is returned and the queue is unchanged. |
 
-| `isEmpty()`   |                                                                                  |
-| ------------- | -------------------------------------------------------------------------------- |
-| Description   | Check if the queue is empty.                                                     |
-| Signature     | `boolean isEmpty()`                                                              |
-| Precondition  | None.                                                                            |
-| Postcondition | Returns `true` if the queue is empty, `false` otherwise. The queue is unchanged. |
+| `isEmpty()`  |                                                                                  |
+| ------------ | -------------------------------------------------------------------------------- |
+| Description  | Check if the queue is empty.                                                     |
+| Signature    | `boolean isEmpty()`                                                              |
+| Precondition | None.                                                                            |
+| Mutator      | No                                                                               |
+| Returns      | Returns `true` if the queue is empty, `false` otherwise. The queue is unchanged. |
 
-| `isFull()`    |                                                                                 |
-| ------------- | ------------------------------------------------------------------------------- |
-| Description   | Check if the queue is full.                                                     |
-| Signature     | `boolean isFull()`                                                              |
-| Precondition  | None.                                                                           |
-| Postcondition | Returns `true` if the queue is full, `false` otherwise. The queue is unchanged. |
+| `isFull()`   |                                                                                 |
+| ------------ | ------------------------------------------------------------------------------- |
+| Description  | Check if the queue is full.                                                     |
+| Signature    | `boolean isFull()`                                                              |
+| Precondition | None.                                                                           |
+| Mutator      | No                                                                              |
+| Returns      | Returns `true` if the queue is full, `false` otherwise. The queue is unchanged. |
 
 !> "Queue exists" precondition: the existence of the object is required for all operations so we will omit it as a precondition. It will be considered incorrect on test.
 
