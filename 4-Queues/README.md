@@ -101,6 +101,42 @@ What is a possible problem: queue *overflow*.
 
 Please click [here](https://github.com/JAC-CS-Programming-4-W23/E4.2-Queue-Array) to do the exercise.
 
+## ⭕️ Circular Queue
+
+How do we *not* run out of space at the end of the array? Where is there space to be *had*? What if we could reclaim the lost space in the lower portion of the array?
+
+- **Idea 1**: How about when we hit the end, we shift everything back down to the lower portion of the array. Moving back to the original space.
+- **Idea 2**: How about we let the queue "wrap" around the edges of the array. It would be as if the array we're a circle.
+
+The first idea seems easy enough to code. We will sometimes have a costly `enqueue` operation. The second idea can be confusing at first, but has the potential to be efficient for all operations!
+
+Here is an example of a "circular" array with **idea 1** in purple and **idea 2** in blue and green:
+
+![Circular Queue](./images/Circular-Queue.mp4 ':include :type=video controls width=100%')
+
+?> An array is never really circular. We will code our use of array indices to treat the boundary between the `0` index array and the `capacity - 1`.
+
+### ％ Modulus
+
+A standard way to implement the circular array is to use the modulus operation `%`. To see this, take a look at this sequence of expressions using the `%` operator, imagining that we have an array of length 4:
+
+```text
+0 % 4 = 0
+1 % 4 = 1
+2 % 4 = 2
+3 % 4 = 3
+4 % 4 = 0
+5 % 4 = 1
+6 % 4 = 2
+... and so on ...
+```
+
+What we see is that any positive number `x` could be "flattened" into an array position between `0` and `length - 1`. We can now use this for our `enqueue()` and `dequeue()` methods!
+
+### ▶️ Exercise 4.3 - Circular Queue
+
+Please click [here](https://github.com/JAC-CS-Programming-4-W23/E4.3-Circular-Queue) to do the exercise.
+
 ## 📚 References
 
 - [Application Programming Interface](https://en.wikipedia.org/wiki/API)
