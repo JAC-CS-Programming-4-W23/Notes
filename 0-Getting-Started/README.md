@@ -52,7 +52,7 @@ Since we'll be working in the Mac lab this semester, it's important to know a fe
 
 ### Key Shortcuts
 
-- Many shortcuts are the same as Windows if you swap `CTRL` for `CMD`. For example, `CTRL + C` on Windows is `CMD + C` on Mac.
+- Many shortcuts are the same as Windows if you swap <kbd>⌃ Control</kbd> for <kbd>⌘ Command</kbd>. For example, <kbd>⌃</kbd> <kbd>C</kbd> on Windows is <kbd>⌘</kbd> + <kbd>C</kbd> on Mac.
 - `CMD + SPACE` brings up the spotlight search. You can type anything after this and it will search for it on the computer. It's my preferred method for opening applications.
 - `CMD + TAB` swaps between applications, similar to `ALT + TAB` on Windows.
 - ``` CMD + ` ``` swaps between windows of the same application. For example, if you have multiple Word documents open, you can swap between them with this shortcut.

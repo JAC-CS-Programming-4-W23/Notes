@@ -5,3 +5,5 @@
 - [2. ⚖️ Comparable](2-Comparable/ "⚖️ Comparable")
 - [3. 🥞 Stacks](3-Stacks/ "🥞 Stacks")
 - [4. 🚏 Queues](4-Queues/ "🚏 Queues")
+- [5. 🎭 Generics](5-Generics/ "🎭 Generics")
+- [6. ✈️ Traversals](6-Traversals/ "✈️ Traversals")

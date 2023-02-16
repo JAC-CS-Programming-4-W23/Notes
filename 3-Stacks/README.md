@@ -55,8 +55,6 @@ A *pop* operation removes an element from the top of the stack.
 | Mutator      | Yes.                                    |
 | Returns      | -                                       |
 
-Can return `boolean` but what happens when we implement `pop()`?
-
 | `pop()`      |                                                |
 | ------------ | ---------------------------------------------- |
 | Description  | Remove an element from the stack.              |
