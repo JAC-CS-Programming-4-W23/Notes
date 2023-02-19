@@ -34,31 +34,38 @@ We can think of a traversal as "scanning" a collection.
 
 ## 📐 Traversal Design
 
-| `reset`      |                                                                                                                                                           |
-|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Description  | Initialize a traversal. If there are elements, the traversal cursor is positioned on the first element. Otherwise, the traversal is complete (trivially). |
+<!-- tabs:start -->
+
+### **reset**
+
 | Signature    | `void reset()`                                                                                                                                            |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Description  | Initialize a traversal. If there are elements, the traversal cursor is positioned on the first element. Otherwise, the traversal is complete (trivially). |
 | Precondition | None.                                                                                                                                                     |
 | Mutator      | Yes, but only the traversal portion.                                                                                                                      |
 | Returns      | None.                                                                                                                                                     |
 
-| `hasNext`    |                                                                                |
-|--------------|--------------------------------------------------------------------------------|
-| Description  | Determine if a traversal can continue.                                         |
-| Signature    | `boolean hasNext()`                                                            |
-| Precondition | The traversal has been initialized.                                            |
-| Mutator      | No.                                                                            |
-| Returns      | Returns `true` is there are elements left in the traversal, `false` otherwise. |
+### **hasNext**
 
-| `next`       |                                                                                                                                                                                            |
-|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Description  | If there is a next element, the traversal cursor has advanced to it and it is returned. At the end of the traversal cursor is *undefined*, meaning that is no longer refers to an element. |
-| Signature    | `T next()`                                                                                                                                                                                 |
-| Precondition | The traversal has been initialized. The traversal still has at least one element left.                                                                                                     |
-| Mutator      | Yes, but only the traversal portion.                                                                                                                                                       |
-| Returns      | Return the current element in the traversal, and then advance the traversal cursor to the next element.                                                                                    |
+| Signature    | `boolean hasNext()`                                                    |
+| ------------ | ---------------------------------------------------------------------- |
+| Description  | Determine if a traversal can continue.                                 |
+| Precondition | The traversal has been initialized.                                    |
+| Mutator      | No.                                                                    |
+| Returns      | `true` is there are elements left in the traversal, `false` otherwise. |
 
-Note: these are slightly simpler than the version in A2. They don't have preconditions relating to mutation during traversal.
+### **next**
+
+| Signature    | `T next()`                                                                                                                                                                         |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Description  | If there is a next element, the traversal cursor has advanced to it and it is returned. At the end of the traversal, it is *undefined*, meaning it no longer refers to an element. |
+| Precondition | The traversal has been initialized. The traversal still has at least one element left.                                                                                             |
+| Mutator      | Yes, but only the traversal portion.                                                                                                                                               |
+| Returns      | The current element in the traversal, and then advance the traversal cursor to the next element.                                                                                   |
+
+<!-- tabs:end -->
+
+!> Note: these are slightly simpler than the version in A2. They don't have preconditions relating to mutation during traversal.
 
 ## ▶️ Exercises
 

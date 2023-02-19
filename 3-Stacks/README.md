@@ -47,45 +47,54 @@ A *pop* operation removes an element from the top of the stack.
 | ---------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | ![Stack underflow](./images/stack4.png "Possible problem of popping.") | ![Stack overflow](./images/stack5.png "Possible problem of pushing.") |
 
-| `push()`     |                                         |
+<!-- tabs:start -->
+
+### **push**
+
+| Signature    | `void push(int element)`                |
 | ------------ | --------------------------------------- |
 | Description  | Add an element to the top of the stack. |
-| Signature    | `void push(int element)`                |
 | Precondition | Stack is not full.                      |
 | Mutator      | Yes.                                    |
-| Returns      | -                                       |
+| Returns      | None.                                   |
 
-| `pop()`      |                                                |
-| ------------ | ---------------------------------------------- |
-| Description  | Remove an element from the stack.              |
-| Signature    |                                                |
-| Precondition | Stack is not empty.                            |
-| Mutator      | Yes.                                           |
-| Returns      | The element removed from the top of the stack. |
+### **pop**
 
-| `top()`      |                                   |
-| ------------ | --------------------------------- |
-| Description  | Get the top element of the stack. |
-| Signature    |                                   |
-| Precondition | Stack is not empty.               |
-| Mutator      | No.                               |
-| Returns      | The top element is returned.      |
+| Signature    | `int pop()`                                      |
+| ------------ | ------------------------------------------------ |
+| Description  | Remove an element from the stack.                |
+| Precondition | Stack is not empty.                              |
+| Mutator      | Yes.                                             |
+| Returns      | The element (removed) from the top of the stack. |
 
-| `isEmpty()`  |                                                  |
+### **top**
+
+| Signature    | `int top()`                                          |
+| ------------ | ---------------------------------------------------- |
+| Description  | Get the top element of the stack.                    |
+| Precondition | Stack is not empty.                                  |
+| Mutator      | No.                                                  |
+| Returns      | The element (not removed) from the top of the stack. |
+
+### **isEmpty**
+
+| Signature    | `boolean isEmpty()`                              |
 | ------------ | ------------------------------------------------ |
 | Description  | Check if the stack is empty.                     |
-| Signature    |                                                  |
 | Precondition | None.                                            |
 | Mutator      | No.                                              |
 | Returns      | `true` if the stack is empty, `false` otherwise. |
 
-| `isFull()`   |                                                 |
+### **isFull**
+
+| Signature    | `boolean isFull()`                              |
 | ------------ | ----------------------------------------------- |
 | Description  | Check if the stack is full.                     |
-| Signature    |                                                 |
 | Precondition | None.                                           |
 | Mutator      | No.                                             |
 | Returns      | `true` if the stack is full, `false` otherwise. |
+
+<!-- tabs:end -->
 
 !> "Stack exists" precondition: the existence of the object is required for all operations so we will omit it as a precondition. It will be considered incorrect on test.
 
