@@ -7,3 +7,4 @@
 - [4. 🚏 Queues](4-Queues/ "🚏 Queues")
 - [5. 🎭 Generics](5-Generics/ "🎭 Generics")
 - [6. ✈️ Traversals](6-Traversals/ "✈️ Traversals")
+- [7. 👩‍👧 Inheritance](7-Inheritance/ "👩‍👧 Inheritance")
