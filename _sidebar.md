@@ -8,3 +8,5 @@
 - [5. 🎭 Generics](5-Generics/ "🎭 Generics")
 - [6. ✈️ Traversals](6-Traversals/ "✈️ Traversals")
 - [7. 👩‍👧 Inheritance](7-Inheritance/ "👩‍👧 Inheritance")
+- [8. 🔗 References](8-References/ "🔗 References")
+- [9. 🗺️ Maps](9-Maps/ "🗺️ Maps")
