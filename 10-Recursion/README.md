@@ -18,7 +18,7 @@ A little recursive story. [^1]
 
 To follow along with the examples below, be sure to download this starter first!
 
-Please click [here](https://github.com/JAC-CS-Programming-4-W23/10.1-Simple-Recursion) to do the exercise.
+Please click [here](https://github.com/JAC-CS-Programming-4-W23/E10.1-Simple-Recursion) to do the exercise.
 
 ## ❗️ Factorial
 
