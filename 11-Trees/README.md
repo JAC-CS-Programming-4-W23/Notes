@@ -85,7 +85,7 @@ Each node can be thought of as having two (possibly empty) subtrees:
 
 We will use this recursive structure to write recursive methods.
 
-## ▶️ Exercise 10.2 - Binary Tree Recursion
+## ▶️ Exercise 11.1 - Binary Tree Recursion
 
 Please click [here](https://github.com/JAC-CS-Programming-4-W23/E11.1-Binary-Tree-Recursion) to do the exercise.
 
@@ -190,6 +190,6 @@ A Binary Search Tree is a binary tree where each node satisfies the binary searc
 
 i.e. the left subtree of a given node contains values that are strictly less than the node's value, and the right subtree contains values that are strictly greater than the node's value.
 
-## ▶️ Exercise 10.2 - Binary Search Tree
+## ▶️ Exercise 11.2 - Binary Search Tree
 
 Please click [here](https://github.com/JAC-CS-Programming-4-W23/E11.2-Binary-Search-Tree) to do the exercise.
