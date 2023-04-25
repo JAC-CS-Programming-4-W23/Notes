@@ -230,3 +230,51 @@ public static int max(int[] numbers, int index) {
     return numbers[index] > max ? numbers[index] : max;
 }
 ```
+
+## ▶️ Exercise 10.2 - Merge Sort
+
+Please click [here](https://github.com/JAC-CS-Programming-4-W23/E10.2-Merge-Sort) to do the exercise.
+
+## 🔗 Recursive Link Chains
+
+![Recursive Link Chain](./images/1-Recursive-Link-Chain.png)
+
+Each link is an element + sublist.
+
+### Recursive Chain Size
+
+```java
+public static int recursiveSize(Link<T> head) {
+    if(head == null) {
+        return 0;
+    }
+
+    return 1 + size(head.next);
+}
+```
+
+### Recursive Chain Print
+
+```java
+public static int recursivePrint(Link<T> head) {
+    if(head == null) {
+        return;
+    }
+
+    System.out.println(head.element);
+    print(head.next);
+}
+```
+
+### Recursive Reverse Chain Print
+
+```java
+public static int recursivePrintReverse(Link<T> head) {
+    if(head == null) {
+        return;
+    }
+
+    print(head.element);
+    System.out.println(head.element);
+}
+```

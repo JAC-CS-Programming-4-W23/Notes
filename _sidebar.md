@@ -11,3 +11,4 @@
 - [8. 🔗 References](8-References/ "🔗 References")
 - [9. 🗺️ Maps](9-Maps/ "🗺️ Maps")
 - [10. 🔄 Recursion](10-Recursion/ "🔄 Recursion")
+- [11. 🌳 Trees](11-Trees/ "🌳 Trees")
