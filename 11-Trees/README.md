@@ -18,30 +18,9 @@ Other trees we've seen include: nested formats like HTML, XML and JSON, OOP inhe
 
 A tree is made up of nodes:
 
-![Tree](./images/000-Tree.png)
-
-### Family Tree Style Terms
-
-- The child nodes of c are {f, g, h}.
-- The parent node of j is d.
-- q has no children.
-- a has no parent.
-- The descendants of care {f, g, h, k, l}.
-- The ancestors of e are {b, a}, i.e.: just parent, parent of parent and so on.
-- The descendants of a are {b, c, d, e, ..., q}.
-- The ancestors of q are {m, i, d, b, a}.
-- The siblings of f are {g, h}.
-- q has no descendants.
-
-### Nature Style Terms
-
-- The leaf nodes are {o, p, q, k, l, e, f, j}.
-- The root node is a.
-- The internal nodes are {m, i, d, b, c, g, h, a}, non-leaves, so we include the root.
-- The path from e to a: [e, b, a].
-- The path from q to a: [q, m, i, d, b, a].
-- The path from a to o: [a, b, d, i, m, o].
-- We will exclude paths to non-ancestors and non-descendants.
+| Tree                           | Family Tree Style Terms                                                                                                                                                                                                                                                                                                                                                                                             | Nature Style Terms                                                                                                                                                                                                                                                                                                                                                     |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Tree](./images/000-Tree.png) | - The child nodes of c are {f, g, h}.<br>- The parent node of j is d.<br>- q has no children.<br>- a has no parent.<br>- The descendants of care {f, g, h, k, l}.<br>- The ancestors of e are {b, a}, i.e.: just parent, parent of parent and so on.<br>- The descendants of a are {b, c, d, e, ..., q}.<br>- The ancestors of q are {m, i, d, b, a}.<br>- The siblings of f are {g, h}.<br>- q has no descendants. | - The leaf nodes are {o, p, q, k, l, e, f, j}.<br>- The root node is a.<br>- The internal nodes are {m, i, d, b, c, g, h, a}, non-leaves, so we include the root.<br>- The path from e to a: [e, b, a].<br>- The path from q to a: [q, m, i, d, b, a].<br>- The path from a to o: [a, b, d, i, m, o].<br>- We will exclude paths to non-ancestors and non-descendants. |
 
 ## 🌳 Binary Trees
 
