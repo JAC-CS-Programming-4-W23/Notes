@@ -172,3 +172,7 @@ i.e. the left subtree of a given node contains values that are strictly less tha
 ## ▶️ Exercise 11.2 - Binary Search Tree
 
 Please click [here](https://github.com/JAC-CS-Programming-4-W23/E11.2-Binary-Search-Tree) to do the exercise.
+
+## ▶️ Exercise 11.3 - Tree Traversal
+
+Please click [here](https://github.com/JAC-CS-Programming-4-W23/E11.3-Tree-Traversal) to do the exercise.
