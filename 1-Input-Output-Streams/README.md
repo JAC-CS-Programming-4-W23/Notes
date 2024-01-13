@@ -9,7 +9,8 @@
 
 syntax: `print (arg1, arg2, ...)`
 
-The `print` command will convert any object into its `str` version.
+The `print` command will convert any object into a string via the `str()` function.
+When printing, all arguments will be separated by a space.
 
 ### Formatting (`fstring`)
 
@@ -85,13 +86,13 @@ Syntax: `open(filename: str, mode: str, encoding: Optional[str] = None)`
   * `r` open file for reading
   * `w` open file for writing
   * `a` open file for appending
-  * `r+` openf file for reading *and* writing
+  * `r+` open file for reading *and* writing
 * `encoding` - how to interpret the characters that you are reading
   * If encoding is not specified, the default is platform dependent 
-    * Because UTF-8 is the modern de-facto standard, encoding="utf-8" is recommended unless you know that you need to use a different encoding
+    * Because UTF-8 is the modern de-facto standard, `encoding="utf-8"` is recommended unless you know that you need to use a different encoding
 
 ```python
-file_obj = open("./some_file.txt","r",locale="utf-8")
+file_obj = open("./some_file.txt","r",encoding="utf-8")
 ```
 ### Read from a File
 
@@ -101,36 +102,36 @@ Once a file has been opened for reading, you can
 * read one line (`readline()`) or 
 * loop over the file object (`for line in file_obj:`).
 
-`read()` **always** returns a string that *includes* the new-line character!
+All the above methods returns string(s) that ***include*** the new-line character!
 
 ```python
 # read everything in the file
-file_obj = open("./some_file.txt","r",locale="utf-8")
+file_obj = open("./some_file.txt","r",encoding="utf-8")
 entire_file: str = file_obj.read()
 ```
 
 ```python
 # read only the first 10 bytes in the file
-file_obj = open("./some_file.txt","r",locale="utf-8")
+file_obj = open("./some_file.txt","r",encoding="utf-8")
 entire_file: str = file_obj.read(10)
 ```
 
 ```python
 # read first two lines of the file
-file_obj = open("./some_file.txt","r",locale="utf-8")
+file_obj = open("./some_file.txt","r",encoding="utf-8")
 lines: list[str] = file_obj.readlines()
 ```
 
 ```python
 # read first two lines of the file
-file_obj = open("./some_file.txt","r",locale="utf-8")
+file_obj = open("./some_file.txt","r",encoding="utf-8")
 line1: str = file_obj.readline()
 line2: str = file_obj.readline()
 ```
 
 ```python
 # read everything line by line
-file_obj = open("./some_file.txt","r",locale="utf-8")
+file_obj = open("./some_file.txt","r",encoding="utf-8")
 for line in file_obj:
     print(line)
 ```
@@ -147,11 +148,11 @@ Syntax: `print(arg1, arg2, file=file_obj)`
 * `print` automatically adds the newline character
 
 ```python
-file_obj = open("./some_file.txt","w",locale="utf-8")
+file_obj = open("./some_file.txt","w",encoding="utf-8")
 x = 15
 file_obj.write(str(x))  # file has 2 bytes
 
-file_obj = open("./some_other_file.txt","w",locale="utf-8")
+file_obj = open("./some_other_file.txt","w",encoding="utf-8")
 x = 15
 print(x, file=file_obj) # on mac or linux, file has 3 bytes (`1`,`2`,`\n`)
 ```
@@ -193,7 +194,7 @@ file.close()
 
 Syntax: `file_obj.close()`
 
-If a program exits *properly*, all files will be closed automatically.
+If a program exits *properly*, all currently open files will be closed automatically.
 
 ## File Context Manager
 
@@ -220,183 +221,253 @@ print("All done")
 
 ## 🐑 Copy a File
 
-### Copy v1: The Basic Way
+### Copy: Small Files Only
 
-Read all characters from an input file to an output file, i.e.: file copy.
-
-```java
-public static void copy(String inFileName, String outFileName) {
-    FileReader reader = new FileReader(inFileName);
-    FileWriter writer = new FileWriter(outFileName);
-    int c = reader.read();
-
-    while(c != -1) {
-        writer.write(c);
-        c = reader.read();
-    }
-
-    reader.close();
-    writer.close();
-}
+```python
+def copy(in_file: str, out_file: str):
+    '''
+    Copy one file to another
+    - Not good for large files because we save the contents of the file into memory!
+    '''
+    with open(in_file, "r") as file:
+        file_contents = file.read()
+    with open(out_file, "w") as file:
+        file.write(file_contents)
 ```
 
-### Copy v2: The More Efficient Way
+### Copy: Any Sized File
 
-We will revisit combining streams later in the course!
+```python
+def copy(in_file: str, out_file: str):
+    ''' 
+    Copy one file to another
+    - behind the scenes, the OS will buffer the data in the most efficient manner
+    so no worries about sucking up too much memory
+    '''
 
-```java
-public static void copy(String inFileName, String outFileName) {
-    BufferedReader reader = new BufferedReader(new FileReader(inFileName), 1024);
-    BufferedWriter writer = new BufferedWriter(new FileWriter(outFileName), 1024);
-    int c = reader.read();
-
-    while(c != -1) {
-        writer.write(c);
-        c = reader.read();
-    }
-
-    reader.close();
-    writer.close();
-}
+    with open(in_file,"r") as file_in:
+        with open(out_file,"w") as file_out:
+            for line in file_in:
+                file_out.write(line)
 ```
 
-According to [the Java docs](https://docs.oracle.com/javase/7/docs/api/java/io/BufferedReader.html), the above is more efficient because:
+## Parsing Input
 
-> [`BufferedReader`] will buffer the input from the specified file. Without buffering, each invocation of `read()` or `readLine()` could cause bytes to be read from the file, converted into characters, and then returned, which can be very inefficient.
+It's all well and good to read a line from a file, or input from a user, but unless we can
+glean information from the data, it won't have much value.
 
-### Copy v3: The Scanner and PrintWriter Way
+Most of the parsing is done with methods can be applied to strings, for the most obvious reason
+that the return value of reading data is always a string.
 
-To read more than just single characters, we can attach a [_scanner_](https://docs.oracle.com/javase/7/docs/api/java/util/Scanner.html) to an input stream:
+Reference: [Python Docs](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)
 
-![Input Scanner](./images/4-Input-Scanner.png)
+### Substring
 
-- The `Scanner` class has two major kinds of methods: `hasNext()` and `next()`.
+To get the *nth* character from a string:
 
-To write more than just single characters, we can attach a [_print writer_](https://docs.oracle.com/javase/7/docs/api/java/io/PrintWriter.html) to an output stream:
+```python
+s = input("Enter a string: ")
+print (s[3], "is the fourth character in the string")
 
-![Output Print Writer](./images/5-Output-Print-Writer.png)
+if len(s) > 10:
+    print(s[10], "is the 11th character in the string")
 
-- The `PrintWriter` class has many overloads to `print()` and `println()`. Above copy example, but now line by line:
-
-```java
-public static void copy(String inFileName, String outFileName) {
-    Scanner scanner = new Scanner(new FileReader(inFileName));
-    PrintWriter writer = new PrintWriter(new FileWriter(outFileName));
-
-    while(scanner.hasNextLine()) {
-        writer.println(scanner.nextLine());
-    }
-
-    scanner.close(); // Closes the file reader.
-    writer.close();
-}
+print (s[-1], "is the last character in the string")
 ```
 
-### Scanner Functions
+To get a range of characters (i.e. a substring).  
 
-Consider a text file (or any stream) with numbers and words:
+```python
+s = input("Enter a string: ")
+print(s[3:5], "are the 4th and 5th characters of the string")
+```
 
+Notice that the range does not include the last character specified in the range
+
+`s[i:j]` includes `s[i]`, `s[i+1]`, ... , `s[j-1]`
+
+
+### Character by Character
+
+Python `str` is an iterable (that means you can loop over its contents), so you
+can process one character at a time.
+
+```python
+s = "Hello"
+for c in s:
+    print(c)
+```
 ```text
--1 123
-abc
-3.1415
-223372036854775807
-
-----------------------------------------
-|-1 123\nabc\n3.1415\n223372036854775807|
-----------------------------------------
+H
+e
+l
+l
+o
 ```
 
-```java
-FileReader reader = new FileReader("input.txt");
-Scanner scanner = new Scanner(reader);
+### Split
 
-int x = scanner.nextInt();       // -1
-int y = scanner.nextInt();       // 123
-String s = scanner.next();       // "abc"
-double d = scanner.nextDouble(); // 3.1415
-long l = scanner.nextLong();     // 223372036854775807
+Syntax: `str.split(sep=None, maxsplit = -1)`
 
-scanner.close();
+Returns a list of strings where `sep` defines the deliminator.
+* `sep` is a ***single*** character, unless
+  * If `sep` is None, the deliminator defaults to any white space
+* If `maxsplit` is a positive integer, all splits will occur.
+
+Examples of `split` may be more effective than words, so here are a lot of examples.
+
+```python
+a: str = "hello Sandy, how       are you?"
+x: list[str] = a.split()
+print (x)
 ```
-
-What happens when the "cursor" sees one thing and we expect another?
-
-We can interpret the content of the file as Java primitives. Ex: summing a file of integers:
-
-```java
-public static int sum(String inFileName) {
-    Scanner scanner = new Scanner(new FileReader(inFileName));
-    int sum = 0;
-
-    while(scanner.hasNextInt()) {
-        sum += scanner.nextInt();
-    }
-
-    // At this point, we're confident that the next chunk of data is not a int.
-
-    if (scanner.hasNext()) {
-        // If we're here, there's still stuff to be read, but it's not a int.
-        throw new RuntimeException("Bad input, I need a file that only has ints!");
-    }
-
-    scanner.close(); // Closes the file reader.
-
-    return sum;
-}
-```
-
-`Scanner` reads input by tokens delimited by whitespace by default (regex: `[ \n\t]+`), so the above works for input like this:
-
 ```text
-736   284
-32 409          5432
+['hello', 'Sandy,', 'how', 'are', 'you?']
 ```
 
-We can use `Scanner` to count the lines and words in a given file:
-
-```java
-public static void countLinesAndWords(String inFileName) {
-    Scanner scanner = new Scanner(new FileReader(inFileName));
-    int lines = 0;
-    int words = 0;
-
-    while (scanner.hasNextLine()) {
-        lines++;
-
-        while (scanner.hasNext()) {
-            words++;
-        }
-    }
-
-    scanner.close(); // Closes the file reader.
-
-    System.out.printf("%d lines and %d words.", lines, words);
-}
+```python
+a: str = "hello Sandy, how       are you?"
+x: list[str] = a.split(maxsplit=2)
+print (x)
 ```
+```text
+['hello', 'Sandy,', 'how         are you?']
+```
+
+```python
+a: str = "hello Sandy, how        are you?"
+x: list[str] = a.split(",")
+print (x)
+```
+```text
+['hello Sandy', ' how         are you?']
+```
+
+### Use case
+
+Day 24 of 2023 Advent of Code has input that looks like:
+```text
+19, 13, 30 @ -2,  1, -2
+18, 19, 22 @ -1, -1, -2
+20, 25, 34 @ -2, -2, -4
+12, 31, 28 @ -1, -2, -1
+20, 19, 15 @  1, -5, -3
+```
+where the first three integers are `(x,y,z)` coordinates, and the last three integers are
+the speed in each of the various directions `(vx,vy,vz)`
+
+So, how to parse the data?
+* Read one line at a time (obviously)
+* split the string on the `@` symbol to divide the coordinates from the speeds
+* split coordinate strings on the ","
+* split the speed string on the ","
+
+At this point, we still have strings, not integers, but we will deal with that in the
+next section
+
+```python
+    with open("input.txt","r") as file:
+        for line in file:
+            coordinates, speeds = line.split("@")
+            x,y,z = coordinates.split(",")
+            vx,vy,vz = speeds.split(",")
+```
+
+## Converting Strings to Native Types
+
+Everything in python is an object, include `float` and `int`.
+
+```python
+s: str = "35"
+a: int = int(s)
+b: float = float(s)
+print(a, b)
+```
+```text
+35 35.0
+```
+
+But what if we cannot properly do the conversion?
+```python
+s: str = "35b"
+a: int = int(s)
+print(a)
+```
+```text
+ValueError: invalid literal for int() with base 10: '35b'
+```
+
+Hmm, how about this not very elegant solution?
+```python
+s: str = "35b"
+succeeded = True
+try:
+    a: int = int(s)
+except ValueError:
+    a = 0
+    succeeded = False
+    
+print(succeeded, a)
+```
+
+The above is 'sucky'.  Here's a better idea
+```python
+s: str = "35b"
+if not s.isdigit():
+    print ("Bad person!")
+else:
+    print(int(s))
+```
+
+`str` class has many methods to determine the contents of the string, so one can check
+if the string would be convertible before actually trying to convert it.
+
+
 
 ## ▶️ Exercise 1.1 - Cut
 
-Please click [here](https://github.com/JAC-CS-Programming-4-W23/E1.1-Cut) to do the exercise.
+Please click [here](./Exercises/1.1_Cut/README.md) to do the exercise.
 
-## 📚 References
+## ▶️ Exercise 1.2 - Find Specific Characters in a String
 
-- [BufferedReader](https://docs.oracle.com/javase/7/docs/api/java/io/BufferedReader.html)
-- [Scanner](https://docs.oracle.com/javase/7/docs/api/java/util/Scanner.html)
-- [PrintWriter](https://docs.oracle.com/javase/7/docs/api/java/io/PrintWriter.html)
+Please click [here](./Exercises/1.2_Find_digits_in_string/REAMDME.md) to do the exercise.
 
+# Advanced
 
-# Advanced Fun Stuff
+## Read and Write to a String
+
+You can create an internal buffer that acts just like a file.
+
+[Python Documentation](https://docs.python.org/3/library/io.html#io.StringIO)
+
+```python
+import io
+
+inputs = io.StringIO()
+while True:
+    s = input("Enter Message: ")
+    if s == "END":
+        break
+    elif "sandy" not in s:  
+        print(s, file=inputs)
+
+inputs.seek(0)
+msg = inputs.read()
+# do stuff with msg?
+
+inputs.close()
+```
 
 ## Save output to a clipboard
 
 Context: Day 20 of Advent of Code of 2023 was very challenging for me to figure out what was
 going on.  I needed to use `graphiz` to graph the data, *repeatedly*.  
 
-To simplify my work flow, I write the output directly the clipboard, and thus I can just paste
+To simplify my work flow, I write the output directly to the clipboard, and thus I can just paste
 what I need into the `graphiz` program.
 
 ```python
+from io import StringIO
 import pyperclip as pc
 
 class MyGraphiz:
@@ -404,20 +475,20 @@ class MyGraphiz:
         self.machines: list[Machine] = machines
 
         # Create a low-level file
-        self.file = StringIO()
+        self.file: StringIO = StringIO()
 
     def draw_graph(self):
       
-        # print to my low-level file using print (not write)
-        # although maybe (write) would work.  ??
+        # print to my internal buffer
         print("digraph G {", file=self.file)
+        # ... other stuff
         print("}", file=self.file)
 
         # go back to the beginning of the file
         self.file.seek(0)
         
         # save the contents of the file into a string
-        s=self.file.read()
+        s: str = self.file.read()
         
         # copy this string to the clipboard
         pc.copy(s)
