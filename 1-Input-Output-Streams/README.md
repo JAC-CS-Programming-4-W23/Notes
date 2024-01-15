@@ -4,6 +4,7 @@
 
 - **Read** input from the user or a file.
 - **Write** output to the console or a file.
+- **Parse** information from a string.
 
 ## Writing to the Console
 
@@ -494,3 +495,22 @@ class MyGraphiz:
         pc.copy(s)
 
 ```
+
+# Copyright Notice
+
+All notes in this package are copyrighted under the Creative Commons License CC BY-NC
+
+This license enables reusers to distribute, remix, adapt, and build upon 
+the material in any medium or format for noncommercial purposes only, and only 
+so long as attribution is given to the creator. 
+
+CC BY-NC includes the following elements:
+
+ BY: credit must be given to the creator.
+ NC: Only noncommercial uses of the work are permitted.
+
+Notes originated from Ian Clement, and modified by Vikram Singh.  
+They have been subsequently modified by Ian Clement and Sandy Bultena.
+
+All rights reserved (c) 2024
+

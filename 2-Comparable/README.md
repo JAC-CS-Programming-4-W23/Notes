@@ -2,9 +2,7 @@
 
 ## 🎯 Objectives
 
-- **Explain** Java's `Comparable` interface.
-- **Explain** what a generic data type is in Java.
-- **Implement** Java's `Comparable` interface to compare non-primitive data types using generics.
+- **Create** a class whose objects can be compared (`<`, `<=`, `==`, etc)
 - **Sort** a collection of `Comparable` objects.
 - **Trace** the binary search algorithm.
 - **Find** a particular object in collection of `Comparable` objects using binary search.
@@ -17,63 +15,98 @@ While having different meanings in [philosophy](https://en.wikipedia.org/wiki/Na
 
 This should make sense when it comes to strings and numbers, but how do you order a list of objects? What's the criteria that makes one object greater/less than another object of the same type?
 
-## ⚖️ The Comparable Interface
+## ⚖️ Comparing Objects in Python
 
-From [the Java docs](https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html):
+Reference: [Basic Customization](https://docs.python.org/3/reference/datamodel.html#basic-customization)
 
-> [The Comparable] interface imposes a total ordering on the objects of each class that implements it. This ordering is referred to as the class's *natural ordering*, and the class's `compareTo` method is referred to as its *natural comparison method*.
+When python compares objects, it uses pre-defined methods on those objects.
 
-If our class implements the `Comparable` interface, we must then override the `compareTo()` method.
+For two objects to be comparable, they must have a subset of the following methods:
 
-```java
-public interface Comparable<T> {
-    int compareTo(T rhs);
-}
+```python
+def __lt__(self, other): pass
+def __le__(self, other): pass
+def __eq__(self, other): pass
+def __ne__(self, other): pass
+def __gt__(self, other): pass
+def __ge__(self, other): pass
 ```
 
-- `<T>` is referred to as a *generic type*.
-  - If you're unfamiliar with generic types, [here's](https://docs.oracle.com/javase/tutorial/java/generics/types.html) an excellent tutorial straight from the Java docs!
-- `rhs` is an abbreviation for "right-hand side".
-  - When we compare two things, we usually write something like `x < y`, where `x` is the expression on the "left" (`lhs`) and `y` is the expression on the "right" (`rhs`).
-  - The object we call `compareTo()` on would then implicitly be the expression on the "left" and the one that we pass in would be the expression on the "right".
-- `int` is the return type which should be a **negative integer, zero, or a positive integer** if `lhs` (this object) is **less than, equal to, or greater than** `rhs` (the object passed in).
+Certain built-in functions in python require some, but typically not all, of these methods
+for comparing two objects.
 
-### Example: Months
+### Example:
+```python
+from typing import Protocol
 
-Java has a built-in [`Month`](https://docs.oracle.com/javase/8/docs/api/java/time/Month.html) enum that implements, you guessed it, the `Comparable` interface.
 
-```java
-ArrayList<Month> months = new ArrayList<>();
+class Month:
+    def __init__(self, month: str, index: int):
+        '''
+        Inputs: month - a string representing the name of the month
+                index - Which month of the year?  i.e. May is the 5th month of the year
+        '''
+        self.month: str = month.upper()
+        self.index: int = index
 
-months.add(Month.APRIL);
-months.add(Month.JANUARY);
-months.add(Month.MARCH);
-months.add(Month.FEBRUARY);
+    def __eq__(self, other) -> bool:
+        return self.index == other.index
 
-System.out.println(months); // [APRIL, JANUARY, MARCH, FEBRUARY]
+    def __lt__(self, other) -> bool:
+        return self.index < other.index
 
-System.out.println(Month.JANUARY.compareTo(Month.FEBRUARY)); // -1
-System.out.println(Month.JANUARY.compareTo(Month.JANUARY)); // 0
-System.out.println(Month.FEBRUARY.compareTo(Month.JANUARY)); // 1
+    def __str__(self):
+        return self.month
 
-Collections.sort(months);
 
-System.out.println(months); // [JANUARY, FEBRUARY, MARCH, APRIL]
+m1 = Month("april", 4)
+m2 = Month("JAN", 1)
+
+if m2 < m1: print(m1, m2)  # prints: April Jan
+
+# even though '__gt__' was not defined, it can be inferred from __lt__ and __eq__
+if m1 > m2: print(m1, m2)  # prints: April Jan
+
+if m1 < m2: print(m1, m2)  # prints nothing
+
+if m1 != m2: print(m1, m2)  # prints: April Jan
+
+if m1 == m2: print(m1, m2)  # prints nothing
+
+
+# ================================================================
+# Using a protocol via duck typing
+# ================================================================
+class LessThanProtocol(Protocol):
+    def __lt__(self, other) -> bool: pass
+
+
+# Define a function that requires the protocol
+def earliest(arg1: LessThanProtocol, arg2: LessThanProtocol):
+    if arg1 < arg2:
+        print(arg1, "is the earliest")
+    else:
+        print(arg2, "is the earliest")
+
+
+# Works for months, and integers (`int` is a class, which implements `__lt__`)
+x = 3
+y = 7
+earliest(m1, m2)
+earliest(x, y)
 ```
 
 ## ▶️ Exercise 2.1 - Comparable
 
-Please click [here](https://github.com/JAC-CS-Programming-4-W23/E2.1-Comparable) to do the exercise.
+Please click [here](./Exercises/2_1_Comparable/README.md) to do the exercise.
 
 ## 🔍 Sorting & Searching
 
-If you're thinking, "well, that's cool and everything, but when/why would I need to use Comparable?", then here's the answer from [the Java docs](https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html):
-
-> Lists (and arrays) of objects that implement [`Comparable`] can be sorted automatically by `Collections.sort` (and `Arrays.sort`).
 
 [![Quick Sort](./images/2-Quick-Sort.gif "A visualization of the quick sort algorithm.")](https://lamfo-unb.github.io/2019/04/21/Sorting-algorithms/)
 
-The answer is: **free sorting**! If you keep a sorted collection of objects, then you can use the built-in Java sort methods, as long as the objects in the collection implement `Comparable`! 🥳
+If you keep a sorted collection of objects, then you can use the built-in python sort methods, 
+as long as the objects in the collection implement `__lt__`! 
 
 ### Binary Search
 
@@ -83,41 +116,28 @@ As you should already know, searching becomes trivial if our data is already sor
 
 In most cases, binary search will trounce linear sort.
 
-### Java Implementation
+### Python Implementation For Integers
 
-Here's how we can implement binary search in Java:
+```python
+from typing import Optional
 
-```java
-public static int binarySearch(int[] array, int x) {
-    int low = 0;
-    int high = array.length - 1;
-    int mid = (low + high) / 2;
-    int result = -1;
-
-    while (low <= high) {
-        if (array[mid] < x) { // x is on the right side
-            low = mid + 1;
-        }
-        else if (array[mid] == x) {
-            result = mid;
-            break;
-        }
-        else {               // x is on the left side
-            high = mid - 1;
-        }
-
-        mid = (low + high) / 2;
-    }
-
-    if (low > high) {
-        return -1;
-    }
-
-    return result;
-}
+def binary_search_find_index_of_value(data: list[int], value: int) -> Optional[int]:
+    low: int  = 0
+    high: int = len(data) - 1
+    mid: int = (low + high) // 2   # // is integer division
+    
+    while low <= high:              
+        if data[mid] < value:           # value would be on the right side
+            low = mid + 1
+        elif value < data[mid] :         # value would be on the left side
+            high = mid - 1
+        elif data[mid] == value:        # have we found it?
+            return mid                  # return the index
+        
+        mid = (low + high) // 2         # recalculate the mid-point
+    
+    return None                         # we've looked everywhere and we can't find it
 ```
-
-That's great for numbers, but how do we use binary search for (comparable) objects?
 
 ## ▶️ Exercise 2.2 - Sort & Search
 
@@ -125,6 +145,23 @@ Please click [here](https://github.com/JAC-CS-Programming-4-W23/E2.2-Sort-Search
 
 ## 📚 References
 
-- [Comparable](https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html)
-- [Month](https://docs.oracle.com/javase/8/docs/api/java/time/Month.html)
 - [Binary vs. linear search](https://blog.penjee.com/binary-vs-linear-search-animated-gifs/)
+
+
+# Copyright Notice
+
+All notes in this package are copyrighted under the Creative Commons License CC BY-NC
+
+This license enables reusers to distribute, remix, adapt, and build upon 
+the material in any medium or format for noncommercial purposes only, and only 
+so long as attribution is given to the creator. 
+
+CC BY-NC includes the following elements:
+
+ BY: credit must be given to the creator.
+ NC: Only noncommercial uses of the work are permitted.
+
+Notes originated from Ian Clement, and modified by Vikram Singh.  
+They have been subsequently modified by Ian Clement and Sandy Bultena.
+
+All rights reserved (c) 2024

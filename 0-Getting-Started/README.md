@@ -55,6 +55,12 @@ Scroll directions
 
 1. Download and install [PyCharm Community Edition](https://www.jetbrains.com/pycharm/download) for your OS if it's not already installed.
 
+# Unit Testing
+
+We leave it up to the student to read this documentation as required.
+
+[How to use PyTest](https://www.jetbrains.com/help/pycharm/pytest.html#create-pytest-test)
+
 
 
 # Copyright Notice

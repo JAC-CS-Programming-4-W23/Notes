@@ -172,11 +172,10 @@ An **interface** in object-oriented programming is a set of variables and functi
 - 📑 "Contract" aspect: the implementing class must implement each of the method signatures defined in the interface declaration.
 - 🔌 "Membership" aspect: the implementing class can be supplied wherever the interface type is used, i.e.: where code is written in terms of the interface.
 
-Here's an excellent example of interfaces by [Dave Leeds](https://www.hitthebits.com/p/about-me.html):
+![Interface](./images/11-Interface.png)
 
-[![Interface](./images/10-Interface.png)](https://www.hitthebits.com/2012/11/what-are-interfaces.html)
-
-The light switch provides an easy way for the caller to turn the lights on without the caller having to know anything about the fancy electrical stuff! This concept goes hand in hand with the OOP concept of [abstraction](https://www.digitalocean.com/community/tutorials/what-is-abstraction-in-oops).
+All the user needs to do is place their order, and wait for the pizza.  The quality of the pizza is 
+*not* guaranteed.
 
 In Python, interfaces can be implemented via `abstract classes` or `Protocol`s.  In this course
 we will be using `Protocol`s to implement an interface.
