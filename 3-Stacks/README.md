@@ -5,15 +5,17 @@
 - **Explain** the stack data structure.
 - **Design** a stack data structure.
 - **Solve** a problem using a stack.
-- **Implement** a stack data structure in Java.
+- **Implement** a stack data structure.
 
 ## ↪️ Last in, First out
 
 ![Speed Stacking](./images/1-Speed-Stacking.gif "Is speed stacking still a thing?")
 
-A stack is a *collection* of data. We refer to individual data items in the collection as *elements*.
+A stack is a *collection* of data. We refer to individual data items in the collection 
+as *elements*.
 
-A stack is a **LIFO** collection: the *last* element added to the stack is the *first* element to leave.
+A stack is a **LIFO** collection: the *last* element added to the stack is the 
+*first* element to leave.
 
 Let's draw a stack like this:
 

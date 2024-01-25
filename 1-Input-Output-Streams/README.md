@@ -424,16 +424,39 @@ else:
 if the string would be convertible before actually trying to convert it.
 
 
-
-## ▶️ Exercise 1.1 - Cut
-
-Please click [here](./Exercises/1.1_Cut/README.md) to do the exercise.
-
 ## ▶️ Exercise 1.2 - Find Specific Characters in a String
 
 Please click [here](./Exercises/1.2_Find_digits_in_string/REAMDME.md) to do the exercise.
 
 # Advanced
+
+## Redirection (like Bash)
+
+```python
+import sys
+
+# reading from a file instead of stdin
+with open("inputs.txt", "r") as file:
+    sys.stdin = file
+    while True:
+        x = input()
+        try:
+            x = input()
+            print(x)
+        except EOFError:
+            break
+sys.stdin = sys.__stdin__
+
+input("press enter to continue")
+
+# writing to a file instead of console
+with open("outputs.txt","w") as file:
+    sys.stdout = file
+    print("Hello There")
+sys.stdout = sys.__stdout__
+
+print ("All done")
+```
 
 ## Read and Write to a String
 
